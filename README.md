@@ -41,25 +41,23 @@ restaurant components:
 
 ## Routing, File Naming Conventions, and Data Flow
 
-Rails was created with the concept of convention over configuration and this
-holds true for how the MVC structure was setup. View files correspond directly
+Rails was created with the concept of convention over configuration, and this
+holds true for how the MVC structure was set up. View files correspond directly
 to controller files, which speak directly with models. As an example, imagine
 that you have a blog that has a database table called `articles`. You will have the
 following set of files:
 
-- A `models/article.rb` model file that will contain: validations, database
+- A `app/models/article.rb` model file that will contain: validations, database
   relationships, callbacks, and any custom logic for articles.
 
-- A `controllers/articles_controller.rb` file that will have methods to manage
+- A `app/controllers/articles_controller.rb` file that will have methods to manage
   data flow for the article behavior, including the full set of CRUD features.
   The standard methods are: `index`, `create`, `show`, `update`, and `destroy`.
 
-- A `views/articles` directory that will contain a corresponding view for each of the
-  pages that the end user will access. For a CRUD based model, a few of the
-  standard views would include: an `index` view to show all records, a `show`
-  page that shows a specific record, and then `new` and `edit` pages that each
-  render a form. In a Rails API application, we won't have a dedicated
-  folder for our views like we would in a typical Rails MVC application.
+- A `app/views/articles` directory that will contain a corresponding view for
+  each of the pages that the end user will access. **Note**: in a Rails API
+  application, we won't have a dedicated folder for our views like we would in a
+  typical Rails MVC application.
 
 ## Request Flow
 
@@ -87,11 +85,16 @@ create each meal that the waiter (**controller**) and especially the table
 items such as complex database queries, data relationships, and custom
 algorithms.
 
-It is important to remember to follow the single responsibility principle for your model class files. If any of the methods that you place in the model file perform tasks outside the scope of that specific model, they should probably be moved to their own class.
+It is important to remember to follow the single responsibility principle for
+your model class files. If any of the methods that you place in the model file
+perform tasks outside the scope of that specific model, they should probably be
+moved to their own class.
 
 ### Controllers
 
-As mentioned before, the controller is like the waiter in a restaurant. The controllers connect the models, views, and routes. To make it even more straightforward, think in terms of the following process:
+As mentioned before, the controller is like the waiter in a restaurant. The
+controllers connect the models, views, and routes. To make it even more
+straightforward, think in terms of the following process:
 
 - The routes file looks to the controller and ensures that the methods in the
   controller match the items in the routes file.
@@ -101,7 +104,7 @@ As mentioned before, the controller is like the waiter in a restaurant. The cont
   some JSON data).
 
 Remembering our restaurant analogy, the easiest way to think of the controller
-is that it manages data flow between the router, model, and views, in the same
+is that it manages data flow between the routes, model, and views, in the same
 way that a waiter takes the order from a patron, relays the order details to the
 chef, and brings the meal out to the table.
 
@@ -109,11 +112,19 @@ chef, and brings the meal out to the table.
 
 In a Rails application, the view layer should contain the least amount of logic
 of any layer in the model-view-controller architecture. The role of the view is
-to simply render whatever it is sent from the model.
+to simply render whatever it is sent from the controller.
 
 The kind of data our view layer is responsible for depends on what kind of
-response our clients need. For a Rails API, we'll typically be responding with
-JSON data.
+response our clients need. In a full-stack Rails app, that could mean generating
+HTML as a view by using a `.erb` template:
+
+```erb
+<div>
+  <%= "#{@post.title}: #{@post.summary}" %>
+</div>
+```
+
+For a Rails API, we'll typically be responding with JSON data.
 
 The data for our view layer will typically come from our models:
 
@@ -121,7 +132,9 @@ The data for our view layer will typically come from our models:
 class ArticlesController < ApplicationController
 
   def index
+    # access data from the Model
     articles = Article.all
+    # respond with a View
     render json: articles
   end
 
