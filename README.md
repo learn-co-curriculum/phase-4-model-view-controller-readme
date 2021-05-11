@@ -21,7 +21,7 @@ In a restaurant kitchen we have three key components:
 Using this as an analogy, we can assign the following roles to each of our
 restaurant components:
 
-- **Model**: The model is the _chef_. It manage the critical aspects of the
+- **Model**: The model is the _chef_. It manages the critical aspects of the
   application, such as communicating with the database via Active Record. One of
   my favorite tasks in a Rails application is working with the model files. This
   is where you can be very expressive with the custom algorithms that you want
@@ -36,7 +36,7 @@ restaurant components:
 - **View**: The view is the _table_. A table shouldn't do anything besides sit
   there and hold the food when it is delivered. In like manner the views should
   not contain any programming logic, they should simply render what the
-  controller sends it. In a Rails API application, our view layer will consist
+  controller sends them. In a Rails API application, our view layer will consist
   of the JSON data that is returned from our controllers.
 
 ## Routing, File Naming Conventions, and Data Flow
@@ -58,6 +58,9 @@ following set of files:
   each of the pages that the end user will access. **Note**: in a Rails API
   application, we won't have a dedicated folder for our views like we would in a
   typical Rails MVC application.
+
+In order to benefit from all the work Rails does for us — and to avoid breaking
+our app — we need to follow the indicated file structure and naming conventions.
 
 ## Request Flow
 
@@ -93,15 +96,14 @@ moved to their own class.
 ### Controllers
 
 As mentioned before, the controller is like the waiter in a restaurant. The
-controllers connect the models, views, and routes. To make it even more
-straightforward, think in terms of the following process:
+controllers connect the models, views, and routes.
 
-- The routes file looks to the controller and ensures that the methods in the
-  controller match the items in the routes file.
-
-- The controller is responsible for accessing data using the model, and using
-  that data to render the correct view (whether that's an actual `.erb` file, or
-  some JSON data).
+In order for the controller to be able to connect everything together, each
+route defined in the routes file must have a corresponding method in a
+controller. When a request comes in, Rails uses the routes file to determine
+which controller method to run. The controller method then accesses data using
+the model, and uses that data to render the correct view (whether that's an
+actual `.erb` file, or some JSON data).
 
 Remembering our restaurant analogy, the easiest way to think of the controller
 is that it manages data flow between the routes, model, and views, in the same
