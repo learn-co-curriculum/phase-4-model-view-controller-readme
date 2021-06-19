@@ -14,8 +14,8 @@ it a real world analogy.
 
 In a restaurant kitchen we have three key components:
 
-- A chef that makes the food
-- A waiter that takes the order and brings out the food
+- A chef who makes the food
+- A waiter who takes the food from the chef and brings it to the table
 - A table where the food is served to the customer
 
 Using this as an analogy, we can assign the following roles to each of our
@@ -23,7 +23,7 @@ restaurant components:
 
 - **Model**: The model is the _chef_. It manages the critical aspects of the
   application, such as communicating with the database via Active Record. One of
-  my favorite tasks in a Rails application is working with the model files. This
+  our favorite tasks in a Rails application is working with the model files. This
   is where you can be very expressive with the custom algorithms that you want
   to utilize and you also have direct access to the specific database record.
   The logic of your application should mainly reside in the model files.
@@ -88,7 +88,7 @@ create each meal that the waiter (**controller**) and especially the table
 items such as complex database queries, data relationships, and custom
 algorithms.
 
-It is important to remember to follow the single responsibility principle for
+It is important to remember to follow the **single responsibility principle** for
 your model class files. If any of the methods that you place in the model file
 perform tasks outside the scope of that specific model, they should probably be
 moved to their own class.
