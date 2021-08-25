@@ -147,6 +147,16 @@ Later on, we'll also see how to customize the structure of this JSON data even
 further using a **serializer**. For now though, just think of the view as the
 response that's being returned from the controller.
 
+## Check For Understanding
+
+Before you move on, make sure you can answer the following questions:
+
+1. In the MVC architecture, what is the primary responsibility of each of the
+   three componenents?
+2. In the MVC architecture, which component should contain the most logic? Which
+   should contain the least?
+3. What are some benefits of using Rails and the MVC architecture?
+
 ## Resources
 
 - [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html)
