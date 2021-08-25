@@ -152,8 +152,8 @@ response that's being returned from the controller.
 Before you move on, make sure you can answer the following questions:
 
 1. In the MVC architecture, what is the primary responsibility of each of the
-   three componenents?
-2. In the MVC architecture, which component should contain the most logic? Which
+   three layers?
+2. In the MVC architecture, which layer should contain the most logic? Which
    should contain the least?
 3. What are some benefits of using Rails and the MVC architecture?
 
