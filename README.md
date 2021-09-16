@@ -44,17 +44,17 @@ restaurant components:
 Rails was created with the concept of convention over configuration, and this
 holds true for how the MVC structure was set up. View files correspond directly
 to controller files, which speak directly with models. As an example, imagine
-that you have a blog that has a database table called `articles`. You will have the
+you have a blog that has a database table called `articles`. You will have the
 following set of files:
 
-- A `app/models/article.rb` model file that will contain: validations, database
+- An `app/models/article.rb` model file that will contain: validations, database
   relationships, callbacks, and any custom logic for articles.
 
-- A `app/controllers/articles_controller.rb` file that will have methods to manage
+- An `app/controllers/articles_controller.rb` file that will have methods to manage
   data flow for the article behavior, including the full set of CRUD features.
   The standard methods are: `index`, `create`, `show`, `update`, and `destroy`.
 
-- A `app/views/articles` directory that will contain a corresponding view for
+- An `app/views/articles` directory that will contain a corresponding view for
   each of the pages that the end user will access. **Note**: in a Rails API
   application, we won't have a dedicated folder for our views like we would in a
   typical Rails MVC application.
@@ -146,6 +146,16 @@ end
 Later on, we'll also see how to customize the structure of this JSON data even
 further using a **serializer**. For now though, just think of the view as the
 response that's being returned from the controller.
+
+## Check For Understanding
+
+Before you move on, make sure you can answer the following questions:
+
+1. In the MVC architecture, what is the primary responsibility of each of the
+   three layers?
+2. In the MVC architecture, which layer should contain the most logic? Which
+   should contain the least?
+3. What are some benefits of using Rails and the MVC architecture?
 
 ## Resources
 
